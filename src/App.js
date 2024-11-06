@@ -1,15 +1,7 @@
 import "./App.css";
-import { useState } from "react";
-import IncrementButton from "./IncrementButton";
-import DecrementButton from "./DecementButton";
-import { useSelector } from "react-redux";
-import IncrementByValue from "./IncrementByValue";
-import ThemeButtons from "./ThemeButtons";
 
 function App() {
-  const { counter } = useSelector((state) => state.counter);
-  const { theme } = useSelector((state) => state.theme);
-  const [inputValue, setInputValue] = useState(0);
+  const theme = "light";
 
   return (
     <div
@@ -20,20 +12,18 @@ function App() {
         color: theme === "light" ? "black" : "white",
       }}
     >
-      <div style={{ marginBottom: 20 }}>
-        <IncrementButton />
-        <DecrementButton />
-      </div>
-
-      <input
-        type="number"
-        value={inputValue}
-        onChange={(e) => setInputValue(Number(e.target.value))}
-      />
-      <IncrementByValue inputValue={inputValue} />
-      <h2>Value: {counter}</h2>
-
-      <ThemeButtons />
+      <button
+        style={{ height: 50, width: 150, fontSize: 17, marginRight: 20 }}
+        onClick={() => {}}
+      >
+        Dark Theme
+      </button>
+      <button
+        style={{ height: 50, width: 150, fontSize: 17 }}
+        onClick={() => {}}
+      >
+        Light Theme
+      </button>
     </div>
   );
 }
