@@ -1,26 +1,33 @@
 import "./App.css";
+import { useSelector, useDispatch } from "react-redux";
+import { setDarkTheme, setLightTheme } from "./themeSlice";
 
 function App() {
-  const theme = "light";
+  const { isLightTheme } = useSelector((store) => store.theme);
+  const dispatch = useDispatch();
 
   return (
     <div
       className="App"
       style={{
         height: "100vh",
-        backgroundColor: theme === "light" ? "wheat" : "darkblue",
-        color: theme === "light" ? "black" : "white",
+        backgroundColor: isLightTheme ? "wheat" : "darkblue",
+        color: isLightTheme ? "black" : "white",
       }}
     >
       <button
         style={{ height: 50, width: 150, fontSize: 17, marginRight: 20 }}
-        onClick={() => {}}
+        onClick={() => {
+          dispatch(setDarkTheme());
+        }}
       >
         Dark Theme
       </button>
       <button
         style={{ height: 50, width: 150, fontSize: 17 }}
-        onClick={() => {}}
+        onClick={() => {
+          dispatch(setLightTheme());
+        }}
       >
         Light Theme
       </button>
